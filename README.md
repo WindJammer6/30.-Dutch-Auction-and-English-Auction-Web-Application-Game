@@ -10,3 +10,14 @@ As well as how to run locally or via the deployed platform? What platform did I 
 
 
 This is just a prototype that I quickly made with the help of ChatGPT. Its not the most robust code. The video demonstrates how its supposed to work.
+
+
+
+How to run it locally,
+
+Install dependencies:
+npm init -y
+npm install express socket.io
+
+To run it:
+node server.js
