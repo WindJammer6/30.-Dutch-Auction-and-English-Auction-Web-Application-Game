@@ -49,9 +49,9 @@
       // Show auction result
       socket.on('auctionResult', ({ winner, price, trueValue }) => {
         if (winner === playerName) {
-          alert(`You won the auction at $${price} (True value was $${trueValue})`);
+          alert(`You won the auction!`);
         } else {
-          alert(`${winner} won the auction at $${price} (True value was $${trueValue})`);
+          alert(`${winner} won the auction!`);
         }
       });
 
