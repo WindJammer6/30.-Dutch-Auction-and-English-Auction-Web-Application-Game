@@ -65,7 +65,13 @@ node server.js
 <br>
 
 ## 2. Code Description <a name = "codedescription"></a>
-This 2D Unity game is built on the [Unity](https://unity.com/) game development framework, so obviusly the building process is mainly done in the [Unity](https://unity.com/) editor/software, with the C# script components scripting done on the [VS code](https://code.visualstudio.com/) IDE. 
+'.streamlit' folder
+i. 'config.toml' file
+'README.md' file
+'Crop yield dataset.csv' file
+'Image of PetaniAI logo.jpg', 'Image of PetaniAI user logo.jpg' and 'Image of local hydroponic farm site analysis.jpg' files
+'main.py' file
+'requirements.txt' file
 
 <br>
 
