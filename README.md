@@ -30,11 +30,12 @@ It supports multiple game hostings, each of which can be created by creating a g
 <br>
 
 ### Rules of the Dutch Auction and English Auction Game
-<img src="https://github.com/WindJammer6/30.-Dutch-Auction-and-English-Auction-Web-Application-Game/blob/main/Image%20of%20the%20Rules%20of%20the%20Dutch%20Auction%20Game.png"  width="625" height="350">  
-Rules of the English Auction game  
-
-<img src="https://github.com/WindJammer6/30.-Dutch-Auction-and-English-Auction-Web-Application-Game/blob/main/Image%20of%20the%20Rules%20of%20the%20English%20Auction%20Game.png"  width="625" height="450">  
-Rules of the English Auction game  
+<p align="center"> 
+  Rules of the English Auction game <br>
+  <img src="https://github.com/WindJammer6/30.-Dutch-Auction-and-English-Auction-Web-Application-Game/blob/main/Image%20of%20the%20Rules%20of%20the%20Dutch%20Auction%20Game.png"  width="700" height="350">  
+  Rules of the English Auction game <br>
+  <img src="https://github.com/WindJammer6/30.-Dutch-Auction-and-English-Auction-Web-Application-Game/blob/main/Image%20of%20the%20Rules%20of%20the%20English%20Auction%20Game.png"  width="700" height="450">  
+</p>
 
 <br>
 
