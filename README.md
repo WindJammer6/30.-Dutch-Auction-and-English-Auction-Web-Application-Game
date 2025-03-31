@@ -118,7 +118,7 @@ The CSS styling frontend code for all the 'hostdutchauction.html' file and 'host
 
 <br>
 
-*3. 'Image of the Rules of the Dutch Auction Game.png' and ''Image of the Rules of the English Auction Game.png' files  
+*3. 'Image of the Rules of the Dutch Auction Game.png' and ''Image of the Rules of the English Auction Game.png' files*  
 Images used in the README.md of this Github repository.
 
 <br>
