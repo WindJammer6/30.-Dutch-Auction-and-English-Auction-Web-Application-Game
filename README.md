@@ -22,6 +22,6 @@ npm install express socket.io
 ```
 
 To run it:
-``````txt
+```txt
 node server.js
 ```
