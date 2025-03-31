@@ -9,9 +9,9 @@ It allows multiple users to join a game created by the host, who can act as bidd
 As well as how to run locally or via the deployed platform? What platform did I use to deploy it?
 
 
-This is just a prototype that I quickly made with the help of ChatGPT. Its not the most robust code. The video demonstrates how its supposed to work.
+This is just a prototype that I quickly made with the help of ChatGPT. Its not the most robust code. The video demonstrates how its supposed to work. Its a very loose peice of code (not robust at all!) so if you dont use according to how it is meant to be used you definitely will get bugs!
 
-
+Table of Contents:
 
 How to run it locally,
 
