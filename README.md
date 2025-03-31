@@ -16,12 +16,12 @@ This is just a prototype that I quickly made with the help of ChatGPT. Its not t
 How to run it locally,
 
 Install dependencies:
-```
+```txt
 npm init -y
 npm install express socket.io
 ```
 
 To run it:
-```
+``````txt
 node server.js
 ```
