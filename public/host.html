@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Host Screen</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Host Screen</h1>
+  <input type="text" id="gameCode" placeholder="Enter Game Code">
+  <button onclick="createGame()">Create Game</button>
+
+  <div id="playerList"></div>
+
+  <div id="questionSection" style="display:none">
+    <input type="text" id="questionText" placeholder="Enter Question">
+    <input type="text" id="optionA" placeholder="Option A">
+    <input type="text" id="optionB" placeholder="Option B">
+    <input type="text" id="optionC" placeholder="Option C">
+    <input type="text" id="optionD" placeholder="Option D">
+    <input type="text" id="correctOption" placeholder="Correct Option (A/B/C/D)">
+    <button onclick="sendQuestion()">Send Question</button>
+  </div>
+
+  <div id="answers"></div>
+  <button onclick="getScores()">Show Scores</button>
+  <div id="scores"></div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="host.js"></script>
+</body>
+</html>
