@@ -1,12 +1,12 @@
-# 30.-Dutch-Auction-and-English-Auction-Web-Application-Game
-This is a [Kahoot](https://kahoot.it/)-style inspired web application live mini-game for a presentation on the topic of Auctions for a microeconomics module I took during my university. It simulates a live auction game that I did with my classmates during the presentation to demonstrate how the generic Dutch Auctions and English Auctions works. 
+# 30.-Dutch-Auction-and-English-Auction-Web-Application-Game <img src="https://cdn-icons-png.flaticon.com/512/5736/5736605.pngg" width="50" height="50"> (rmb to add the full microeconomics presentation slides here!!!!!)
+This is a [Kahoot](https://kahoot.it/)-style inspired web application live mini-game for a presentation on the topic of Auctions for a microeconomics module I took during my university. It simulates a live auction game that I did with my classmates during the presentation to demonstrate how the generic Dutch Auctions and English Auctions works. The rules of the games slightly deviates from how the actual generic Dutch Auctions and English Auctions rules due to the constraints of needing to do it as a presentation activity, but it conveys the idea of how they work.
 
 Here is the link of the deployed Dutch Auction and English Auction Web Application game on [Render](https://render.com/): https://three0-dutch-auction-and-english-auction.onrender.com/ (Click the link to try out the game!)
 
 Here is a demonstration of how this game works:  
 (add video here)
 
-These videos are done by me, using [OBS Studio software](https://obsproject.com/) for screen recording and VideoPad Video Editor (by NCH Software) for video editing.
+This video are done by me, using [OBS Studio software](https://obsproject.com/) for screen recording and VideoPad Video Editor (by NCH Software) for video editing.
 
 Disclaimer: This is just a semi-functioning prototype that I quickly made with the help of [ChatGPT](https://chatgpt.com/) in 2 days. Hence, expect that it is not the most robust code, and is only designed for demonstration purposes. The video demonstrates how its supposed to work. If you don't use it according to how it is meant to as shwon in the video likely you might run into some bugs!
 
@@ -26,9 +26,8 @@ It supports multiple game hostings, each of which can be created by creating a g
 
 <br>
 
-### Rules of the Dutch Auction and English Auction game
+### Rules of the Dutch Auction and English Auction Game
 
-(Add pic of the rules of the game here and the full microeconomics presentation slides here)
 
 <br>
 
