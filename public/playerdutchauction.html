@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Player Screen</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Join Game</h1>
+
+  <input type="text" id="gameCode" placeholder="Enter Game Code">
+  <input type="text" id="playerName" placeholder="Your Name">
+  <button id="joinBtn">Join</button>
+
+  <div id="claimBox" style="display: none;">
+    <button id="claimBtn" class="btn">I'll Take It!</button>
+  </div>
+
+  <!-- Socket.IO -->
+  <script src="/socket.io/socket.io.js"></script>
+
+  <!-- JavaScript Logic -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const socket = io();
+      let gameCode = '';
+      let playerName = '';
+
+      // Handle Join Game button click
+      document.getElementById('joinBtn').addEventListener('click', () => {
+      gameCode = document.getElementById('gameCode').value.trim();
+      playerName = document.getElementById('playerName').value.trim();
+
+      if (!gameCode || !playerName) {
+        alert('Please enter both game code and your name.');
+        return;
+      }
+
+      socket.emit('joinGame', { gameCode, playerName });
+      document.getElementById('claimBox').style.display = 'block';
+
+      // ✅ Attach claimBtn event listener here
+      document.getElementById('claimBtn').addEventListener('click', () => {
+        console.log("Clicked claim button!"); // This should now run!
+        socket.emit('claimItem', { gameCode, playerName });
+      });
+    });
+
+      // Show auction result
+      socket.on('auctionResult', ({ winner, price, trueValue }) => {
+        if (winner === playerName) {
+          alert(`You won the auction at $${price} (True value was $${trueValue})`);
+        } else {
+          alert(`${winner} won the auction at $${price} (True value was $${trueValue})`);
+        }
+      });
+
+      socket.on('connect', () => {
+        console.log('Connected to server as player:', socket.id);
+      });
+    });
+  </script>
+</body>
+</html>
