@@ -39,6 +39,19 @@ It supports multiple game hostings, each of which can be created by creating a g
 
 <br>
 
+**Additional source(s):**  
++ https://chatgpt.com/ (ChatGPT)
+
+<br>
+
+Programming Languages used:  
+![My Skills](https://go-skill-icons.vercel.app/api/icons?i=html) ![My Skills](https://go-skill-icons.vercel.app/api/icons?i=css) ![My Skills](https://go-skill-icons.vercel.app/api/icons?i=javascript)
+
+Frameworks used:  
+![My Skills](https://go-skill-icons.vercel.app/api/icons?i=nodejs) ![My Skills](https://go-skill-icons.vercel.app/api/icons?i=express) ![My Skills](https://go-skill-icons.vercel.app/api/icons?i=socketio)
+
+<br>
+
 ## Table of Contents
 Here is a directory of this 'REAME.md' file:
 1. [How to run locally?](#howtorunlocally)
