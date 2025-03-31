@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>English Auction Game</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { font-family: sans-serif; background: #f0f4f8; padding: 2rem; max-width: 600px; margin: auto; }
+    .card { background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-bottom: 1rem; }
+    .btn { padding: 10px 15px; background: #1e88e5; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; margin: 5px; }
+    .btn:hover { background: #1565c0; }
+    .winner { background: #d4edda; color: #155724; padding: 1rem; border-radius: 6px; margin-top: 1rem; }
+  </style>
+</head>
+<body>
+  <button onclick="location.href='index.html';" class="back-button">Back to Home</button>
+  
+  <h1>English Auction (Host Screen)</h1>
+
+  <input type="text" id="gameCode" placeholder="Enter Game Code">
+  <button class="btn" onclick="createEnglishGame()">Create Game</button>
+  <button class="btn" onclick="startEnglishGame()">Start Game</button>
+  <div id="gameStatus" style="margin-top: 10px; font-weight: bold;">
+    <div id="gameCreatedMsg"></div>
+    <div id="awaitingMsg"></div>
+  </div>
+
+  <div id="playerList"></div>
+
+  <!-- This whole section is hidden until Start Game is clicked -->
+  <div id="auctionSection" style="display: none;">
+    <div class="card">
+      <p>Current Price: <span id="current-price">$50</span></p>
+      <p style="font-size: 0.9em; color: gray;">(True value is hidden)</p>
+      <button class="btn" onclick="startAuction()">Start Auction</button>
+      <button class="btn" onclick="endAuction()">End Auction</button>
+    </div>
+  
+      <div class="card" id="raiseSection" style="display: none;">
+        <h3>Bidders, click Your 'Raise Bid' button to raise the bid!</h3>
+    
+      <div id="log-box" class="log" style="display: none;"></div>
+      <div id="winner-box" class="winner" style="display: none;"></div>
+    </div>
+
+    <!-- Socket.IO -->
+    <script src="/socket.io/socket.io.js"></script>
+  
+    <script>
+      const socket = io();
+
+      function createEnglishGame() {
+        const gameCode = document.getElementById('gameCode').value;
+        socket.emit('createEnglishGame', gameCode);
+        document.getElementById('gameCreatedMsg').innerText = `Game created with the code: ${gameCode}`;
+        document.getElementById('awaitingMsg').innerText = `Awaiting players...`;
+      }
+
+      function startEnglishGame() {
+        document.getElementById('auctionSection').style.display = 'block';
+      }
+
+      socket.on('playerList', (players) => {
+        // Show the raise section once players join
+        document.getElementById('raiseSection').style.display = 'block';
+
+        // Show player list
+        const list = players.map(p => `<div>${p.name}</div>`).join('');
+        document.getElementById('playerList').innerHTML = '<h3>Players:</h3>' + list;
+
+        // Remove "Awaiting players..." message
+        document.getElementById('awaitingMsg').innerHTML = '';
+      });
+
+      let currentPrice = 50;
+      let trueValue = generateTrueValue();
+      let auctionRunning = false;
+      let highestBidder = null;
+      const BID_INCREMENT = 5;
+  
+      function generateTrueValue() {
+        return Math.floor(Math.random() * 30) + 50; // $50 - $80
+      }
+  
+      function startAuction() {
+        currentPrice = 50;
+        trueValue = generateTrueValue();
+        auctionRunning = true;
+        highestBidder = null;
+        document.getElementById("current-price").textContent = "$50";
+        document.getElementById("winner-box").style.display = "none";
+        document.getElementById("log-box").style.display = "none";
+        document.getElementById("log-box").textContent = "";
+      }
+  
+      function raiseBid(group) {
+        if (!auctionRunning) return;
+        currentPrice += BID_INCREMENT;
+        highestBidder = group;
+        document.getElementById("current-price").textContent = "$" + currentPrice;
+        document.getElementById("log-box").style.display = "block";
+        document.getElementById("log-box").textContent = `${group} raised the bid to $${currentPrice}`;
+      }
+  
+      function endAuction() {
+        auctionRunning = false;
+        document.getElementById("winner-box").style.display = "block";
+        if (highestBidder) {
+          document.getElementById("winner-box").innerHTML = `
+            <strong>${highestBidder}</strong> won the auction at <strong>$${currentPrice}</strong><br/>
+          `;
+        } else {
+          document.getElementById("winner-box").innerHTML = `
+            No group placed a bid.<br/>
+          `;
+        }
+      }
+
+      socket.on('raiseItem', ({ playerName }) => {
+        console.log('Host got raiseItem from player:', playerName);
+
+        if (!auctionRunning) return;
+
+        // Increase the price by your chosen increment
+        currentPrice += BID_INCREMENT;
+        highestBidder = playerName;
+
+        // Show that on the host screen
+        document.getElementById("current-price").textContent = "$" + currentPrice;
+        document.getElementById("log-box").style.display = "block";
+        document.getElementById("log-box").textContent =
+          `${playerName} raised the bid to $${currentPrice}`;
+      });
+    </script>
+</body>
+</html>

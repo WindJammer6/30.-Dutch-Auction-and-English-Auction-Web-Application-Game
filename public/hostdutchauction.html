@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dutch Auction Game</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { font-family: sans-serif; background: #f0f4f8; padding: 2rem; max-width: 600px; margin: auto; }
+    .card { background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-bottom: 1rem; }
+    .btn { padding: 10px 15px; background: #1e88e5; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; margin: 5px; }
+    .btn:hover { background: #1565c0; }
+    .winner { background: #d4edda; color: #155724; padding: 1rem; border-radius: 6px; margin-top: 1rem; }
+  </style>
+</head>
+<body>
+  <button onclick="location.href='index.html';" class="back-button">Back to Home</button>
+  
+  <h1>Dutch Auction (Host Screen)</h1>
+
+  <input type="text" id="gameCode" placeholder="Enter Game Code">
+  <button class="btn" onclick="createDutchGame()">Create Game</button>
+  <button class="btn" onclick="startDutchGame()">Start Game</button>
+  <div id="gameStatus" style="margin-top: 10px; font-weight: bold;">
+    <div id="gameCreatedMsg"></div>
+    <div id="awaitingMsg"></div>
+  </div>
+
+  <div id="playerList"></div>
+
+  <!-- This whole section is hidden until Start Game is clicked -->
+  <div id="auctionSection" style="display: none;">
+    <div class="card">
+      <p>Current Price: <span id="current-price">$100</span></p>
+      <p style="font-size: 0.9em; color: gray;">(True value is hidden)</p>
+      <button class="btn" onclick="startAuction()">Start Auction</button>
+    </div>
+
+    <div class="card" id="claimSection" style="display: none;">
+      <h3>Bidders, click Your 'I'll take it!' button to claim the item!</h3>
+      <!-- <div id="claimButtons"></div> -->
+    </div>
+
+    <div id="winner-box" class="winner" style="display: none;"></div>
+  </div>
+
+  <!-- Socket.IO -->
+  <script src="/socket.io/socket.io.js"></script>
+
+  <!-- JavaScript Logic -->
+  <script>
+    const socket = io();
+
+    function createDutchGame() {
+      const gameCode = document.getElementById('gameCode').value;
+      socket.emit('createDutchGame', gameCode);
+      document.getElementById('gameCreatedMsg').innerText = `Game created with the code: ${gameCode}`;
+      document.getElementById('awaitingMsg').innerText = `Awaiting players...`;
+    }
+
+    function startDutchGame() {
+      document.getElementById('auctionSection').style.display = 'block';
+    }
+
+    socket.on('playerList', (players) => {
+      // Show the claim section once players join
+      document.getElementById('claimSection').style.display = 'block';
+
+      // Show player list
+      const list = players.map(p => `<div>${p.name}</div>`).join('');
+      document.getElementById('playerList').innerHTML = '<h3>Players:</h3>' + list;
+
+      // Remove "Awaiting players..." message
+      document.getElementById('awaitingMsg').innerHTML = '';
+
+      // // Generate claim buttons for each player
+      // const buttonsHtml = players.map(player =>
+      //   `<button class="btn" onclick="claimAuction('${player.name}')">I'll Take It! (${player.name})</button>`
+      // ).join('');
+      // document.getElementById('claimButtons').innerHTML = buttonsHtml;
+    });
+
+    let currentPrice = 100;
+    let intervalId = null;
+    let trueValue = generateTrueValue();
+    let auctionRunning = false;
+    let winner = null;
+    let winningGroup = null;
+
+    function generateTrueValue() {
+      return Math.floor(Math.random() * 30) + 50; // $50 - $80
+    }
+
+    function startAuction() {
+      currentPrice = 100;
+      trueValue = generateTrueValue();
+      auctionRunning = true;
+      winner = null;
+      winningGroup = null;
+      document.getElementById("current-price").textContent = "$100";
+      document.getElementById("winner-box").style.display = "none";
+
+      if (intervalId) clearInterval(intervalId);
+      intervalId = setInterval(() => {
+        if (currentPrice <= 0) {
+          clearInterval(intervalId);
+          auctionRunning = false;
+          return;
+        }
+        currentPrice--;
+        document.getElementById("current-price").textContent = "$" + currentPrice;
+      }, 500);
+    }
+
+    function claimAuction(group) {
+      if (!auctionRunning || winner || winningGroup) return;
+      auctionRunning = false;
+      clearInterval(intervalId);
+      winner = group;
+      winningGroup = group;
+      document.getElementById("winner-box").style.display = "block";
+      document.getElementById("winner-box").innerHTML = `
+        <strong>${group}</strong> claimed the item at <strong>$${currentPrice}</strong><br/>
+      `;
+    }
+    
+    socket.on('claimItem', ({ playerName }) => {
+      console.log('Host received claimItem from:', playerName); // Test log
+      // Reuse your existing function
+      claimAuction(playerName);
+    });
+  </script>
+</body>
+</html>

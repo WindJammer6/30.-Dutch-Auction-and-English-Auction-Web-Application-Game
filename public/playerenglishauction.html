@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Player Screen</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <button onclick="location.href='index.html';" class="back-button">Back to Home</button>
+  
+  <h1>Join English Auction Game</h1>
+
+  <input type="text" id="gameEnglishCode" placeholder="Enter Game Code">
+  <input type="text" id="playerName" placeholder="Your Name">
+  <button id="joinBtn">Join</button>
+
+  <div id="raiseBox" style="display: none;">
+    <button id="raiseBtn" class="btn">Raise Bid</button>
+  </div>
+
+  <!-- Socket.IO -->
+  <script src="/socket.io/socket.io.js"></script>
+
+  <!-- JavaScript Logic -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const socket = io();
+      let gameEnglishCode = '';
+      let playerName = '';
+
+      // Handle Join Game button click
+      document.getElementById('joinBtn').addEventListener('click', () => {
+      gameEnglishCode = document.getElementById('gameEnglishCode').value.trim();
+      playerName = document.getElementById('playerName').value.trim();
+
+      if (!gameEnglishCode || !playerName) {
+        alert('Please enter both game code and your name.');
+        return;
+      }
+
+      socket.emit('joinEnglishGame', { gameEnglishCode, playerName });
+      document.getElementById('raiseBox').style.display = 'block';
+
+      // ✅ Attach raiseBtn event listener here
+      document.getElementById('raiseBtn').addEventListener('click', () => {
+        console.log("Clicked raise button!"); // This should now run!
+        socket.emit('raiseItem', { gameEnglishCode, playerName });
+      });
+    });
+
+      socket.on('connect', () => {
+        console.log('Connected to server as player:', socket.id);
+      });
+    });
+  </script>
+</body>
+</html>

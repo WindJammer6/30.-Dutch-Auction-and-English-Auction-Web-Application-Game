@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Player Screen</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <button onclick="location.href='index.html';" class="back-button">Back to Home</button>
+  
+  <h1>Join Dutch Auction Game</h1>
+
+  <input type="text" id="gameDutchCode" placeholder="Enter Game Code">
+  <input type="text" id="playerName" placeholder="Your Name">
+  <button id="joinBtn">Join</button>
+
+  <div id="claimBox" style="display: none;">
+    <button id="claimBtn" class="btn">I'll Take It!</button>
+  </div>
+
+  <!-- Socket.IO -->
+  <script src="/socket.io/socket.io.js"></script>
+
+  <!-- JavaScript Logic -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const socket = io();
+      let gameDutchCode = '';
+      let playerName = '';
+
+      // Handle Join Game button click
+      document.getElementById('joinBtn').addEventListener('click', () => {
+      gameDutchCode = document.getElementById('gameDutchCode').value.trim();
+      playerName = document.getElementById('playerName').value.trim();
+
+      if (!gameDutchCode || !playerName) {
+        alert('Please enter both game code and your name.');
+        return;
+      }
+
+      socket.emit('joinDutchGame', { gameDutchCode, playerName });
+      document.getElementById('claimBox').style.display = 'block';
+
+      // ✅ Attach claimBtn event listener here
+      document.getElementById('claimBtn').addEventListener('click', () => {
+        console.log("Clicked claim button!"); // This should now run!
+        socket.emit('claimItem', { gameDutchCode, playerName });
+      });
+    });
+
+      // Show auction result
+      socket.on('auctionResult', ({ winner, price, trueValue }) => {
+        if (winner === playerName) {
+          alert(`You won the auction!`);
+        } else {
+          alert(`${winner} won the auction!`);
+        }
+      });
+
+      socket.on('connect', () => {
+        console.log('Connected to server as player:', socket.id);
+      });
+    });
+  </script>
+</body>
+</html>
