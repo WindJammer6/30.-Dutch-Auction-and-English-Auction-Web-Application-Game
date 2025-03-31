@@ -63,7 +63,9 @@ io.on('connection', (socket) => {
       socket.join(gameCode);
       dutchGames[gameCode].players.push({ id: socket.id, name: playerName });
       console.log(`${playerName} joined Dutch game ${gameCode}`);
-      io.to(gameCode).emit('playerJoined', playerName);
+  
+      // Emit the full player list to everyone in the room
+      io.to(gameCode).emit('playerList', dutchGames[gameCode].players);
     } else {
       socket.emit('error', 'Game not found');
     }
