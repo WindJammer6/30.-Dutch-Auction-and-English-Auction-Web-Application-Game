@@ -129,7 +129,7 @@ The server.js file typically serves as the main entry point, responsible for ini
 
 <br>
 
-## 3. Deployment Process of this Dutch Auction and English Auction Web Application Game <a name = "deploymentprocess"></a> <img src="https://tutorials.yax.com/assets/images/articles/render-logo.png" width="50" height="50"> 
+## 3. Deployment Process of this Dutch Auction and English Auction Web Application Game <a name = "deploymentprocess"></a> ![My Skills](https://go-skill-icons.vercel.app/api/icons?i=render)
 (This description is copy pasted from [ChatGPT](https://chatgpt.com/) and it helped me deploy this Dutch Auction and English Auction Web Application Game)
 ```txt
 1. Push your code to GitHub if you haven’t already:
