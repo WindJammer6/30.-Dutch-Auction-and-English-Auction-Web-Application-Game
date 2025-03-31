@@ -5,3 +5,8 @@ A Kahoot-style inspired web application live mini-game for a school presentation
 It allows multiple users to join a game created by the host, who can act as bidders for an Dutch and English Auction.
 
 (Add rules of the game here and the full microeconomics presentation slides here)
+
+As well as how to run locally or via the deployed platform? What platform did I use to deploy it?
+
+
+This is just a prototype that I quickly made with the help of ChatGPT.
