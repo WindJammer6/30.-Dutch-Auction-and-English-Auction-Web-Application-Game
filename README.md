@@ -73,11 +73,11 @@ This 2D Unity game is built on the [Unity](https://unity.com/) game development 
 (This description is copy pasted from [ChatGPT](https://chatgpt.com/) and it helped me deploy this Dutch Auction and English Auction Web Application Game)
 ```txt
 1. Push your code to GitHub if you haven’t already:
-git init
-git add .
-git commit -m "Initial commit"
-git remote add origin https://github.com/your-username/30.-Dutch-Auction-and-English-Auction-Web-Application-Game.git
-git push -u origin main
+    git init
+    git add .
+    git commit -m "Initial commit"
+    git remote add origin https://github.com/your-username/30.-Dutch-Auction-and-English-Auction-Web-Application-Game.git
+    git push -u origin main
 
 2. Go to https://render.com
 - Sign up and click “New Web Service”
@@ -88,7 +88,7 @@ git push -u origin main
   - Node Version: leave blank or 18
 
 3. Render will give you a live URL, e.g.:
-https://30.-Dutch-Auction-and-English-Auction-Web-Application-Game.onrender.com
+    https://30.-Dutch-Auction-and-English-Auction-Web-Application-Game.onrender.com
 ```
 
 Honestly, the deployment process on [Render](https://render.com/) is very straightforward and the [Render](https://render.com/) platform provides very clear instructions and a logging terminal for your deployed apps to help in the deployment of your app. Once deployed, I got a direct '[Render](https://render.com/)' link to this Dutch Auction and English Auction Web Application Game, which I can then share with others to try out this Dutch Auction and English Auction Web Application Game.
