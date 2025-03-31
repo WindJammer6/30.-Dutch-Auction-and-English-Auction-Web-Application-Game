@@ -16,7 +16,7 @@ Made with socket.io and node.js, html, css and js.
 
 ### Features
 For this prototype web application, as I was pressed for time, and that it was not graded to build an entire web application for some presentation demonstration (I did it out of interest), it is more focused on implementing the features to demonstrate the concepts of the generic Dutch Auctions and English Auctions in a fun way (it does not have the best code quality nor UI/UX☹️). Here is a list of features in the Dutch Auction and English Auction Web Application game:  
-- Main menu
+- Main menu page
 - Host a Dutch Auction page (for hosting a Dutch Auction game)
   - The Dutch Auction page shows who are the players who has joined your game
 - Host an English Auction page (for hosting an English Auction game)
