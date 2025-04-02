@@ -35,6 +35,7 @@
       <p style="font-size: 0.9em; color: gray;">(True value is hidden)</p>
       <button class="btn" onclick="startAuction()">Start Auction</button>
       <button class="btn" onclick="endAuction()">End Auction</button>
+      <div id="startMessage" style="font-weight: bold; margin-bottom: 10px; display: none;"></div>
     </div>
   
       <div class="card" id="raiseSection" style="display: none;">
@@ -92,6 +93,12 @@
         document.getElementById("winner-box").style.display = "none";
         document.getElementById("log-box").style.display = "none";
         document.getElementById("log-box").textContent = "";
+
+        
+        // ✅ Show the auction start message
+        const startMessage = document.getElementById("startMessage");
+        startMessage.style.display = "block";
+        startMessage.textContent = "🔔 English auction has started!";
       }
   
       function raiseBid(group) {
