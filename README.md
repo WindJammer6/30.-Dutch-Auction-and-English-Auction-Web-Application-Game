@@ -7,9 +7,13 @@ This is a [Kahoot](https://kahoot.it/)-style inspired web application live mini-
 Here is the link of the deployed Dutch Auction and English Auction Web Application game on [Render](https://render.com/): https://three0-dutch-auction-and-english-auction.onrender.com/ (Click the link to try out the game!)
 
 Here is a demonstration of how this game works:  
-(add video here)
 
-This video are done by me, using [OBS Studio software](https://obsproject.com/) for screen recording and VideoPad Video Editor (by NCH Software) for video editing.
+
+https://github.com/user-attachments/assets/daf9194c-802c-490e-8ed7-ee0a22f810a4
+
+
+
+This video are done by me, using [OBS Studio software](https://obsproject.com/) for screen recording and [Canva](https://www.canva.com/) for video editing. Music is ['2:23 AM' by Sharou](https://www.youtube.com/watch?v=16Bj6aPi1A8).
 
 Disclaimer: This is just a semi-functioning prototype that I quickly made with the help of [ChatGPT](https://chatgpt.com/) in 2 days. Hence, expect that it is not the most robust code, and is only designed for demonstration purposes. The video demonstrates how its supposed to work. If you don't use it according to how it is meant to as shwon in the video likely you might run into some bugs!
 
