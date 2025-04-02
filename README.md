@@ -166,6 +166,7 @@ The server.js file typically serves as the main entry point, responsible for ini
 
 Honestly, the deployment process on [Render](https://render.com/) is very straightforward and the [Render](https://render.com/) platform provides very clear instructions and a logging terminal for your deployed apps to help in the deployment of your app. Once deployed, I got a direct '[Render](https://render.com/)' link to this Dutch Auction and English Auction Web Application Game, which I can then share with others to try out this Dutch Auction and English Auction Web Application Game.
 
+- Here is the link of my [Render](https://render.com/) account - https://dashboard.render.com/project/prj-cvl3q224d50c73e1ha30 (Direct link to this project's [Render](https://render.com/) deployment project, but only accessible by me through email)
 - Here is the link of this deployed Dutch Auction and English Auction Web Application Game on [Render](https://render.com/) - https://three0-dutch-auction-and-english-auction.onrender.com
 
 *Source(s):*  
