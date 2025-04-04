@@ -31,7 +31,7 @@
   <!-- This whole section is hidden until Start Game is clicked -->
   <div id="auctionSection" style="display: none;">
     <div class="card">
-      <p>Current Price: <span id="current-price">$50</span></p>
+      <p>Current Price: <span id="current-price">$0</span></p>
       <p style="font-size: 0.9em; color: gray;">(True value is hidden)</p>
       <button class="btn" onclick="startAuction()">Start Auction</button>
       <button class="btn" onclick="endAuction()">End Auction</button>
@@ -74,18 +74,18 @@
         document.getElementById('awaitingMsg').innerHTML = '';
       });
 
-      let currentPrice = 50;
+      let currentPrice = 0;
       let trueValue = generateTrueValue();
       let auctionRunning = false;
       let highestBidder = null;
-      const BID_INCREMENT = 5;
+      const BID_INCREMENT = 1;
   
       function generateTrueValue() {
         return Math.floor(Math.random() * 30) + 50; // $50 - $80
       }
   
       function startAuction() {
-        currentPrice = 50;
+        currentPrice = 0;
         trueValue = generateTrueValue();
         auctionRunning = true;
         highestBidder = null;
