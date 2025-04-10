@@ -1,7 +1,4 @@
 # 30.-Dutch-Auction-and-English-Auction-Web-Application-Game <img src="https://cdn-icons-png.flaticon.com/512/5736/5736605.png" width="50" height="50">
-
-(rmb to add the full microeconomics presentation slides here!!!!!) https://www.canva.com/design/DAGhnIR82Jo/FiMQRRgJhWrLoijj4DrZlQ/edit
-
 This is a [Kahoot](https://kahoot.it/)-style inspired web application live mini-game for a presentation on the topic of Auctions for a microeconomics module I took during my university. It simulates a live auction game that I did with my classmates during the presentation to demonstrate how the generic Dutch Auctions and English Auctions works. The rules of the games slightly deviates from how the actual generic Dutch Auctions and English Auctions rules due to the constraints of needing to do it as a presentation activity, but it conveys the idea of how they work.
 
 Here is the link of the deployed Dutch Auction and English Auction Web Application game on [Render](https://render.com/): https://three0-dutch-auction-and-english-auction.onrender.com/ (Click the link to try out the game!)
